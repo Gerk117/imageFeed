@@ -25,6 +25,9 @@ class ImagesListViewController: UIViewController {
         formatter.timeStyle = .none
         return formatter
     }()
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     func configCell(for cell: ImagesListCell?, with indexPath: IndexPath) {
         guard let image = UIImage(named: photosName[indexPath.row]) else {
@@ -33,7 +36,7 @@ class ImagesListViewController: UIViewController {
         
         cell?.imageViewCell.image = image
         cell?.dateOfImageLabel.text = formatter.string(from: Date())
-
+        cell?.dateOfImageLabel.layer.insertSublayer(cell!.gradientLayer, at: 0)
         let isLiked = indexPath.row % 2 == 0
         let likeImage = isLiked ? UIImage(named: "like_button_on") : UIImage(named: "like_button_off")
         cell?.likeButton.setImage(likeImage, for: .normal)
