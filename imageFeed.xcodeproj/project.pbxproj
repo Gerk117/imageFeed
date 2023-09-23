@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C701DDAA2AB275690077DA6F /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C701DDA92AB275690077DA6F /* ImagesListCell.swift */; };
 		C79D6E762AA8E32D00CC1825 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E752AA8E32D00CC1825 /* AppDelegate.swift */; };
 		C79D6E782AA8E32D00CC1825 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E772AA8E32D00CC1825 /* SceneDelegate.swift */; };
-		C79D6E7A2AA8E32D00CC1825 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E792AA8E32D00CC1825 /* ViewController.swift */; };
+		C79D6E7A2AA8E32D00CC1825 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E792AA8E32D00CC1825 /* ImagesListViewController.swift */; };
 		C79D6E7D2AA8E32D00CC1825 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79D6E7B2AA8E32D00CC1825 /* Main.storyboard */; };
 		C79D6E7F2AA8E32E00CC1825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79D6E7E2AA8E32E00CC1825 /* Assets.xcassets */; };
 		C79D6E822AA8E32E00CC1825 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79D6E802AA8E32E00CC1825 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C701DDA92AB275690077DA6F /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		C79D6E722AA8E32D00CC1825 /* imageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79D6E752AA8E32D00CC1825 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79D6E772AA8E32D00CC1825 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C79D6E792AA8E32D00CC1825 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C79D6E792AA8E32D00CC1825 /* ImagesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListViewController.swift; sourceTree = "<group>"; };
 		C79D6E7C2AA8E32D00CC1825 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C79D6E7E2AA8E32E00CC1825 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79D6E812AA8E32E00CC1825 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7909BEF2AB4ED6A00695EE5 /* ImagesList */ = {
+			isa = PBXGroup;
+			children = (
+				C79D6E792AA8E32D00CC1825 /* ImagesListViewController.swift */,
+				C701DDA92AB275690077DA6F /* ImagesListCell.swift */,
+			);
+			path = ImagesList;
+			sourceTree = "<group>";
+		};
 		C79D6E692AA8E32D00CC1825 = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +67,9 @@
 		C79D6E742AA8E32D00CC1825 /* imageFeed */ = {
 			isa = PBXGroup;
 			children = (
+				C7909BEF2AB4ED6A00695EE5 /* ImagesList */,
 				C79D6E752AA8E32D00CC1825 /* AppDelegate.swift */,
 				C79D6E772AA8E32D00CC1825 /* SceneDelegate.swift */,
-				C79D6E792AA8E32D00CC1825 /* ViewController.swift */,
 				C79D6E7B2AA8E32D00CC1825 /* Main.storyboard */,
 				C79D6E7E2AA8E32E00CC1825 /* Assets.xcassets */,
 				C79D6E802AA8E32E00CC1825 /* LaunchScreen.storyboard */,
@@ -138,7 +149,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C79D6E7A2AA8E32D00CC1825 /* ViewController.swift in Sources */,
+				C79D6E7A2AA8E32D00CC1825 /* ImagesListViewController.swift in Sources */,
+				C701DDAA2AB275690077DA6F /* ImagesListCell.swift in Sources */,
 				C79D6E762AA8E32D00CC1825 /* AppDelegate.swift in Sources */,
 				C79D6E782AA8E32D00CC1825 /* SceneDelegate.swift in Sources */,
 			);
@@ -293,8 +305,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,9 +313,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GeRK.imageFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -321,8 +335,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,9 +343,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GeRK.imageFeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
