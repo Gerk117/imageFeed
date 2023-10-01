@@ -33,7 +33,7 @@ final class ProfileViewController: UIViewController {
     private let descriptionLabel: UILabel = {
         var label = UILabel()
         label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         label.text = "i respect every Spiderman "
         return label
     }()

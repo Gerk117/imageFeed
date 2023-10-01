@@ -164,7 +164,7 @@
                     <navigationItem key="navigationItem" id="Rop-UD-BDX"/>
                     <connections>
                         <outlet property="imageView" destination="ZBo-oy-VFV" id="h5k-md-ii4"/>
-                        <outlet property="scrollView" destination="mC2-Di-bFm" id="0a6-qC-Yr1"/>
+                        <outlet property="scrollView" destination="mC2-Di-bFm" id="grF-TJ-Rgy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Evd-6d-XyG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
