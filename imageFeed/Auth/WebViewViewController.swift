@@ -25,12 +25,12 @@ class WebViewViewController : UIViewController {
         webView.navigationDelegate = self
         var urlComponents = URLComponents(string:  "https://unsplash.com/oauth/authorize")!
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: AccessKey),
-            URLQueryItem(name: "redirect_uri", value: RedirectURI),
+            URLQueryItem(name: "client_id", value: AuthorisationConsts.accessKey),
+            URLQueryItem(name: "redirect_uri", value: AuthorisationConsts.redirectURI),
             URLQueryItem(name: "response_type", value: "code"),
-            URLQueryItem(name: "scope", value: AccessScope)
+            URLQueryItem(name: "scope", value: AuthorisationConsts.accessScope)
         ]
-        let url = urlComponents.url!
+        guard let url = urlComponents.url else{return}
         let request = URLRequest(url: url)
         webView.load(request)
     }

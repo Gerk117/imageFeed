@@ -20,7 +20,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <segue destination="gH5-37-fma" kind="presentation" identifier="ShowAuthenticationScreen" id="Ayf-XX-I7u"/>
+                        <segue destination="gH5-37-fma" kind="presentation" identifier="ShowAuthenticationScreen" modalPresentationStyle="overFullScreen" id="Ayf-XX-I7u"/>
                         <segue destination="2iM-qe-nrm" kind="presentation" id="bLj-xU-5p3"/>
                     </connections>
                 </viewController>
@@ -34,7 +34,7 @@
                 <navigationController id="gH5-37-fma" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7bW-xd-nLq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Qk-me-dPj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -50,11 +50,11 @@
             <objects>
                 <viewController id="AZu-jy-l3E" customClass="AuthViewController" customModule="imageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6U-0V-mYT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="886"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEM-Nc-CuV">
-                                <rect key="frame" x="16" y="748" width="382" height="48"/>
+                                <rect key="frame" x="16" y="758" width="382" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="jEj-mx-yBi"/>
@@ -73,7 +73,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VectorAuth" translatesAutoresizingMaskIntoConstraints="NO" id="TmN-kA-vbk">
-                                <rect key="frame" x="177" y="413" width="60" height="60"/>
+                                <rect key="frame" x="177" y="418" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Ped-9h-ODo"/>
                                     <constraint firstAttribute="width" constant="60" id="cMF-XR-DPb"/>

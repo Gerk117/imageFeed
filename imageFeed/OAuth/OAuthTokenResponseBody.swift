@@ -7,11 +7,9 @@
 
 import Foundation
 
-class OAuthTokenResponseBody : Codable {
-    var access_token : String
-    var token_type : String
+struct OAuthTokenResponseBody : Codable {
+    var accessToken : String
+    var tokenType : String
     var scope : String
-    var created_at : Int
+    var createdAt : Int
 }
-
-
