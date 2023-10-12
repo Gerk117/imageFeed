@@ -70,7 +70,6 @@ final class ProfileViewController: UIViewController {
         ])
         NSLayoutConstraint.activate([
             logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55),
-            // Здравствуйте! хотел спросить а почему иногда происходит так, что view уходит в другую строну при присвоении положительного числа как в строчке ниже. написал там просто 16 а кнопка ушла вправо. с тем же сталкивался при использовании snapkit. Буду очень благодарен если скажите почему так происходит или поделитесь ссылкой на сайт где этот момент раскрывается, а то самостоятельно найти причину пока не удалось, спасибо!
             logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             logoutButton.widthAnchor.constraint(equalToConstant: 24),
             logoutButton.heightAnchor.constraint(equalToConstant: 24)
