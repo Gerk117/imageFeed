@@ -6,8 +6,13 @@
 //
 
 import UIKit
+import NotificationCenter
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
+    private let profileService = ProfileService.shared
+    private let profileImageService = ProfileImageService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
     private let avatarImageView: UIImageView = {
         var image = UIImageView()
         image.image = UIImage(named: "avatar")
@@ -44,15 +49,46 @@ final class ProfileViewController: UIViewController {
         return button
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupScreen()
+        updateProfileDetails(profile: profileService.profile)
+        profileImageServiceObserver = NotificationCenter.default    
+            .addObserver(
+                forName: ProfileImageService.DidChangeNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
+        updateAvatar()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateProfileDetails(profile: profileService.profile)
+    }
+    private func updateAvatar() {                                   // 8
+        guard
+            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let url = URL(string: profileImageURL)
+        else { return }
+        avatarImageView.kf.setImage(with: url)
+    }
+    
+    private func updateProfileDetails(profile: Profile?) {
+        self.nameLabel.text = profile?.name
+        self.loginNameLabel.text = profile?.loginName
+        self.descriptionLabel.text = profile?.bio
+    }
+    
     
     private func didTapLogoutButton() {
     }
     
     private func setupScreen(){
+        view.backgroundColor = UIColor(red: 26/255, green: 27/255, blue: 34/255, alpha: 1)
         [avatarImageView,
          nameLabel,
          loginNameLabel,
@@ -86,5 +122,6 @@ final class ProfileViewController: UIViewController {
             descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             descriptionLabel.topAnchor.constraint(equalTo: loginNameLabel.bottomAnchor, constant: 8)
         ])
+        
     }
 }
