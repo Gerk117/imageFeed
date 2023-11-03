@@ -24,16 +24,17 @@ final class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if oauth2TokenStorage.token != nil {
-            fetchProfile(token: OAuth2TokenStorage().token!)
-
-        } else {
-            performSegue(withIdentifier: ShowAuthenticationScreenSegueIdentifier, sender: nil)
+        if let token = oauth2TokenStorage.token {
+            fetchProfile(token: token)
+            
+        }else{
+            presentAuthView()
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(cgColor: CGColor(red: 26/255, green: 27/255, blue: 36/255, alpha: 1))
+        setupScreen()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,10 +62,11 @@ final class SplashViewController: UIViewController {
 extension SplashViewController {
     func presentAuthView(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var view = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController
-        view.delegate = self
-        view.modalPresentationStyle = .fullScreen
-        present(view, animated: true)
+        if let view = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController {
+            view.delegate = self
+            view.modalPresentationStyle = .fullScreen
+            present(view, animated: true)
+        }
     }
 }
 
@@ -92,20 +94,20 @@ extension SplashViewController: AuthViewControllerDelegate {
             UIBlockingProgressHUD.dismiss()
         }
     }
-   
+    
     private func fetchProfile(token: String) {
         UIBlockingProgressHUD.show()
-            profileService.fetchProfile(token) { result in
-                switch result {
-                case .success(let profile):
-                    self.fetchProfileImageURL(username: profile?.username ?? "")
-                    self.switchToTabBarController()
-                    UIBlockingProgressHUD.dismiss()
-                case .failure:
-                    self.showAlert()
-                    break
-                }
+        profileService.fetchProfile(token) { result in
+            switch result {
+            case .success(let profile):
+                self.fetchProfileImageURL(username: profile?.username ?? "")
+                self.switchToTabBarController()
+                UIBlockingProgressHUD.dismiss()
+            case .failure:
+                self.showAlert()
+                break
             }
+        }
         
         
     }
@@ -113,9 +115,9 @@ extension SplashViewController: AuthViewControllerDelegate {
     private func fetchProfileImageURL(username : String) {
         profileImageService.fetchProfileImageURL(username: username) { result in
             switch result {
-            case .success(let imageUrl):
-                print(imageUrl)
-            case .failure(let error):
+            case .success:
+                UIBlockingProgressHUD.dismiss()
+            case .failure:
                 self.showAlert()
                 break
             }

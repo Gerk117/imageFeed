@@ -19,7 +19,6 @@ class OAuth2Service {
         task?.cancel()
         lastCode = code
         let request = makeRequest(code: code)
-        // понимаю что наверное очень странный вопрос, но почему нельзя написать так : result:Result<OAuthTokenResponseBody,Error>, тоесть без скобок
         let task = urlSession.objectTask(for: request) {[weak self] (result:Result<OAuthTokenResponseBody,Error>) in
             guard let self else {return}
             switch result {
@@ -59,16 +58,17 @@ extension URLSession {
         completion: @escaping (Result<T, Error>) -> Void
     ) -> URLSessionTask {
         let task = dataTask(with: request, completionHandler: { data, response, error in
-            guard error == nil else {
-                completion(.failure(error!))
+            if let error {
+                completion(.failure(error))
                 return
             }
             guard let data else {return}
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let result = try? decoder.decode(T.self, from: data)
-            DispatchQueue.main.async {
-                completion(.success(result!))
+            if let result = try? decoder.decode(T.self, from: data){
+                DispatchQueue.main.async {
+                    completion(.success(result))
+                }
             }
         })
         return task

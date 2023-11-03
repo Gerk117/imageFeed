@@ -6,9 +6,9 @@
 //
 
 import Foundation
-struct UserResult : Codable {
-    var profileImage : Size
+struct UserResult: Codable {
+    var profileImage: Size
 }
-struct Size : Codable {
-    var small : String
+struct Size: Codable {
+    var small: String
 }

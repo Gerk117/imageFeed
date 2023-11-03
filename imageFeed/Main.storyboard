@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fVs-2G-oTw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -27,7 +27,7 @@
         <!--Navigation Controller-->
         <scene sceneID="bwN-Cq-d4P">
             <objects>
-                <navigationController storyboardIdentifier="AuthViewController" id="gH5-37-fma" sceneMemberID="viewController">
+                <navigationController id="gH5-37-fma" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7bW-xd-nLq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Qk-me-dPj">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -44,7 +44,7 @@
         <!--Auth View Controller-->
         <scene sceneID="RwN-nJ-YBP">
             <objects>
-                <viewController id="AZu-jy-l3E" customClass="AuthViewController" customModule="imageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthViewController" id="AZu-jy-l3E" customClass="AuthViewController" customModule="imageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6U-0V-mYT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

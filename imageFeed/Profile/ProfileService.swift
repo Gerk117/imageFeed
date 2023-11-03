@@ -10,7 +10,7 @@ import UIKit
 final class ProfileService {
     static let shared = ProfileService()
     private let urlSession = URLSession.shared
-    private var task : URLSessionTask?
+    private var task: URLSessionTask?
     private(set) var profile: Profile?
     
     func fetchProfile(_ token: String, completion: @escaping (Result<Profile?, Error>) -> Void) {
@@ -24,10 +24,10 @@ final class ProfileService {
             guard let self else {return}
             switch result {
             case .success(let result):
-                var profile = Profile(username: result.username!,
-                                      name: result.firstName! + " " + result.lastName!,
+                var profile = Profile(username: result.username,
+                                      name: result.firstName + " " + (result.lastName ?? ""),
                                       bio: result.bio ?? "")
-                profile.loginName += result.username!
+                profile.loginName += result.username
                 self.profile = profile
                 DispatchQueue.main.async {
                     completion(.success(profile))

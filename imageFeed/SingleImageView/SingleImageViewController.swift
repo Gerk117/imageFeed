@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class SingleImageViewController : UIViewController {
+final class SingleImageViewController : UIViewController {
     
     var image: UIImage! {
         didSet {
@@ -16,7 +16,7 @@ class SingleImageViewController : UIViewController {
         }
     }
     @IBOutlet private var imageView: UIImageView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
