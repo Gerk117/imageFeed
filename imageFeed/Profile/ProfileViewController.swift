@@ -39,7 +39,7 @@ final class ProfileViewController: UIViewController {
         var label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-        label.text = "i respect every Spiderman "
+        label.text = "i respect every Spiderman"
         return label
     }()
     
@@ -69,9 +69,9 @@ final class ProfileViewController: UIViewController {
         super.viewDidAppear(animated)
         updateProfileDetails(profile: profileService.profile)
     }
-    private func updateAvatar() {                                   // 8
+    private func updateAvatar() {
         guard
-            let profileImageURL = ProfileImageService.shared.avatarURL,
+            let profileImageURL = profileImageService.avatarURL,
             let url = URL(string: profileImageURL)
         else { return }
         avatarImageView.kf.setImage(with: url)

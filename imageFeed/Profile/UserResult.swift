@@ -10,5 +10,5 @@ struct UserResult: Codable {
     var profileImage: Size
 }
 struct Size: Codable {
-    var small: String
+    var medium: String
 }

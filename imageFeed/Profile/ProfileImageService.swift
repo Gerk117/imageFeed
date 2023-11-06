@@ -24,9 +24,9 @@ final class ProfileImageService {
             guard let self else {return}
             switch result {
             case .success(let user):
-                self.avatarURL = user.profileImage.small
+                self.avatarURL = user.profileImage.medium
                 DispatchQueue.main.async {
-                    completion(.success(user.profileImage.small))
+                    completion(.success(user.profileImage.medium))
                 }
                 NotificationCenter.default.post(
                     name: ProfileImageService.DidChangeNotification,

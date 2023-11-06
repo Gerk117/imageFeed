@@ -24,23 +24,6 @@
             </objects>
             <point key="canvasLocation" x="-1587" y="-455"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="bwN-Cq-d4P">
-            <objects>
-                <navigationController id="gH5-37-fma" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="7bW-xd-nLq"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1Qk-me-dPj">
-                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="AZu-jy-l3E" kind="relationship" relationship="rootViewController" id="cA8-NM-K6j"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pUx-jM-M3c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="61" y="-1088"/>
-        </scene>
         <!--Auth View Controller-->
         <scene sceneID="RwN-nJ-YBP">
             <objects>
@@ -329,7 +312,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXD-op-l2z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60.869565217391312" y="92.410714285714278"/>
+            <point key="canvasLocation" x="-33" y="-220"/>
         </scene>
     </scenes>
     <resources>

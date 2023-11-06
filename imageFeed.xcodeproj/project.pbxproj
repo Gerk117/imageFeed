@@ -16,7 +16,6 @@
 		C72E7ECC2AE9DF3F009C5870 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C72E7ECB2AE9DF3F009C5870 /* ProgressHUD */; };
 		C7304CC82AF32C020066085C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C7304CC72AF32C020066085C /* Kingfisher */; };
 		C7304CCB2AF32E4A0066085C /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = C7304CCA2AF32E4A0066085C /* SwiftKeychainWrapper */; };
-		C7304CCD2AF3351D0066085C /* CellForSingleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7304CCC2AF3351D0066085C /* CellForSingleImageView.swift */; };
 		C7400DD32AC0711800D1950F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7400DD22AC0711800D1950F /* ProfileViewController.swift */; };
 		C747E9F72AD7680800AD766F /* OAuthTokenResponseBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747E9F62AD7680800AD766F /* OAuthTokenResponseBody.swift */; };
 		C747E9F92AD7685700AD766F /* OAuth2Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747E9F82AD7685700AD766F /* OAuth2Service.swift */; };
@@ -43,7 +42,6 @@
 		C71839CA2AF060A5009B4B7B /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		C71839CC2AF060C4009B4B7B /* ProfileResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResult.swift; sourceTree = "<group>"; };
 		C71839CE2AF0621E009B4B7B /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		C7304CCC2AF3351D0066085C /* CellForSingleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForSingleImageView.swift; sourceTree = "<group>"; };
 		C7400DD22AC0711800D1950F /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C747E9F62AD7680800AD766F /* OAuthTokenResponseBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthTokenResponseBody.swift; sourceTree = "<group>"; };
 		C747E9F82AD7685700AD766F /* OAuth2Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2Service.swift; sourceTree = "<group>"; };
@@ -161,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				C77807DC2AC4E90800FB7220 /* SingleImageViewController.swift */,
-				C7304CCC2AF3351D0066085C /* CellForSingleImageView.swift */,
 			);
 			path = SingleImageView;
 			sourceTree = "<group>";
@@ -275,7 +272,6 @@
 				C71839CD2AF060C4009B4B7B /* ProfileResult.swift in Sources */,
 				C7C37F942AF1AEC10028B96D /* UserResult.swift in Sources */,
 				C7D8D13E2AF3F1C1004B25CA /* TabBarController.swift in Sources */,
-				C7304CCD2AF3351D0066085C /* CellForSingleImageView.swift in Sources */,
 				C71839CB2AF060A5009B4B7B /* ProfileService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
