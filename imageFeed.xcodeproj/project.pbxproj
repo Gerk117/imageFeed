@@ -22,6 +22,9 @@
 		C747E9FB2AD76EE900AD766F /* OAuth2TokenStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747E9FA2AD76EE900AD766F /* OAuth2TokenStorage.swift */; };
 		C747E9FE2AD7704B00AD766F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C747E9FD2AD7704B00AD766F /* SplashViewController.swift */; };
 		C77807DD2AC4E90800FB7220 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77807DC2AC4E90800FB7220 /* SingleImageViewController.swift */; };
+		C78C4AF52B01A6CB0043B65A /* ImagesListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4AF42B01A6CB0043B65A /* ImagesListService.swift */; };
+		C78C4AF72B01A72F0043B65A /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4AF62B01A72F0043B65A /* Photo.swift */; };
+		C78C4AF92B01A9180043B65A /* PhotoResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78C4AF82B01A9180043B65A /* PhotoResult.swift */; };
 		C79D6E762AA8E32D00CC1825 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E752AA8E32D00CC1825 /* AppDelegate.swift */; };
 		C79D6E782AA8E32D00CC1825 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E772AA8E32D00CC1825 /* SceneDelegate.swift */; };
 		C79D6E7A2AA8E32D00CC1825 /* ImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79D6E792AA8E32D00CC1825 /* ImagesListViewController.swift */; };
@@ -48,6 +51,9 @@
 		C747E9FA2AD76EE900AD766F /* OAuth2TokenStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuth2TokenStorage.swift; sourceTree = "<group>"; };
 		C747E9FD2AD7704B00AD766F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		C77807DC2AC4E90800FB7220 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
+		C78C4AF42B01A6CB0043B65A /* ImagesListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListService.swift; sourceTree = "<group>"; };
+		C78C4AF62B01A72F0043B65A /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		C78C4AF82B01A9180043B65A /* PhotoResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResult.swift; sourceTree = "<group>"; };
 		C79D6E722AA8E32D00CC1825 /* imageFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imageFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79D6E752AA8E32D00CC1825 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79D6E772AA8E32D00CC1825 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +119,9 @@
 			children = (
 				C79D6E792AA8E32D00CC1825 /* ImagesListViewController.swift */,
 				C701DDA92AB275690077DA6F /* ImagesListCell.swift */,
+				C78C4AF42B01A6CB0043B65A /* ImagesListService.swift */,
+				C78C4AF62B01A72F0043B65A /* Photo.swift */,
+				C78C4AF82B01A9180043B65A /* PhotoResult.swift */,
 			);
 			path = ImagesList;
 			sourceTree = "<group>";
@@ -257,7 +266,9 @@
 				C747E9FB2AD76EE900AD766F /* OAuth2TokenStorage.swift in Sources */,
 				C79D6E7A2AA8E32D00CC1825 /* ImagesListViewController.swift in Sources */,
 				C701DDAA2AB275690077DA6F /* ImagesListCell.swift in Sources */,
+				C78C4AF52B01A6CB0043B65A /* ImagesListService.swift in Sources */,
 				C7400DD32AC0711800D1950F /* ProfileViewController.swift in Sources */,
+				C78C4AF92B01A9180043B65A /* PhotoResult.swift in Sources */,
 				C79D6E762AA8E32D00CC1825 /* AppDelegate.swift in Sources */,
 				C747E9F92AD7685700AD766F /* OAuth2Service.swift in Sources */,
 				C747E9FE2AD7704B00AD766F /* SplashViewController.swift in Sources */,
@@ -270,6 +281,7 @@
 				C71839C92AF05E50009B4B7B /* UIBlockingProgressHUD.swift in Sources */,
 				C7C37F922AF1AE840028B96D /* ProfileImageService.swift in Sources */,
 				C71839CD2AF060C4009B4B7B /* ProfileResult.swift in Sources */,
+				C78C4AF72B01A72F0043B65A /* Photo.swift in Sources */,
 				C7C37F942AF1AEC10028B96D /* UserResult.swift in Sources */,
 				C7D8D13E2AF3F1C1004B25CA /* TabBarController.swift in Sources */,
 				C71839CB2AF060A5009B4B7B /* ProfileService.swift in Sources */,

@@ -58,17 +58,22 @@ extension URLSession {
         completion: @escaping (Result<T, Error>) -> Void
     ) -> URLSessionTask {
         let task = dataTask(with: request, completionHandler: { data, response, error in
+            let httpResponse = HTTPURLResponse().statusCode
+            if 200..<300 ~= httpResponse  {
+                guard let data else {return}
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                if let result = try? decoder.decode(T.self, from: data){
+                    DispatchQueue.main.async {
+                        completion(.success(result))
+                    }
+                }
+            } else {
+                print(httpResponse.description)
+            }
             if let error {
                 completion(.failure(error))
                 return
-            }
-            guard let data else {return}
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            if let result = try? decoder.decode(T.self, from: data){
-                DispatchQueue.main.async {
-                    completion(.success(result))
-                }
             }
         })
         return task

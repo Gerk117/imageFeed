@@ -31,7 +31,7 @@ final class ProfileImageService {
                 NotificationCenter.default.post(
                     name: ProfileImageService.DidChangeNotification,
                     object: self,
-                    userInfo: ["URL": self.avatarURL])
+                    userInfo: ["URL": user.profileImage.medium])
             case .failure(let error):
                 DispatchQueue.main.async {
                     completion(.failure(error))
