@@ -10,17 +10,19 @@ import NotificationCenter
 import Kingfisher
 
 final class ProfileViewController: UIViewController {
+    private var tokenStorage = OAuth2TokenStorage()
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
     private let avatarImageView: UIImageView = {
         var image = UIImageView()
-        image.image = UIImage(named: "avatar")
+//        image.image = UIImage(named: "avatar")
         image.layer.cornerRadius = 35
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         return image
     }()
+
     private let nameLabel: UILabel = {
         var label = UILabel()
         label.text = "Migel Ohara"
@@ -43,9 +45,10 @@ final class ProfileViewController: UIViewController {
         return label
     }()
     
-    private let logoutButton: UIButton = {
+    private var logoutButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "logout_button"), for: .normal)
+        button.addTarget(self, action: #selector(showLogoutAlert), for: .touchUpInside)
         return button
     }()
     
@@ -54,7 +57,7 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupScreen()
         updateProfileDetails(profile: profileService.profile)
-        profileImageServiceObserver = NotificationCenter.default    
+        profileImageServiceObserver = NotificationCenter.default
             .addObserver(
                 forName: ProfileImageService.DidChangeNotification,
                 object: nil,
@@ -68,6 +71,16 @@ final class ProfileViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         updateProfileDetails(profile: profileService.profile)
+    }
+    @objc private func showLogoutAlert() {
+        let alert = UIAlertController(title: "Пока, пока!",
+                                      message: "Уверены что хотите выйти?",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Да", style: .default, handler: {_ in
+            self.didTapLogoutButton()
+        }))
+        alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     private func updateAvatar() {
         guard
@@ -85,7 +98,14 @@ final class ProfileViewController: UIViewController {
     
     
     private func didTapLogoutButton() {
+        WebViewViewController.clean()
+        tokenStorage.token = nil
+        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
+        let splashView = UIStoryboard(name: "Main", bundle: .main)
+            .instantiateViewController(withIdentifier: "SplashViewController")
+        window.rootViewController = splashView
     }
+    
     
     private func setupScreen(){
         view.backgroundColor = UIColor(red: 26/255, green: 27/255, blue: 34/255, alpha: 1)
