@@ -12,15 +12,19 @@ class ImagesListService {
     static let didChangeNotification = Notification.Name("ImagesListServiceDidChange")
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
+    private let dateForm = ISO8601DateFormatter()
     private (set) var photos: [Photo] = []
     private var nextPage = 0
+    private init(){
+        
+    }
     
     func fetchPhotosNextPage(comp : @escaping (Result<[Photo],Error>)->()) {
         assert(Thread.isMainThread)
         guard task == nil else {return}
         nextPage += 1
         var request = URLRequest(url: URL(string:"https://api.unsplash.com/photos?page=\(nextPage)&per_page=10")!)
-        request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage().token!)"]
+        request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage.shared.token!)"]
         let session = urlSession
         let task = session.objectTask(for: request) {[weak self] (result:Result<[PhotoResult],Error>) in
             guard let self else {return}
@@ -74,7 +78,7 @@ class ImagesListService {
         )
         self.photos[index] = newPhoto
         var request = URLRequest(url: URL(string: "https://api.unsplash.com/photos/\(photoId)/like")!)
-        request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage().token!)"]
+        request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage.shared.token!)"]
         if isLike {
             request.httpMethod = "DELETE"
         } else {
@@ -84,8 +88,6 @@ class ImagesListService {
             guard let self else {return}
             switch result {
             case .success(let result):
-                let dateForm = DateFormatter()
-                dateForm.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                 let photo = Photo(id: result.id,
                                   size: CGSize(width: result.width, height: result.height),
                                   createdAt:dateForm.date(from: result.createdAt ?? ""),

@@ -10,34 +10,34 @@ import NotificationCenter
 import Kingfisher
 
 final class ProfileViewController: UIViewController {
-    private var tokenStorage = OAuth2TokenStorage()
+    private var tokenStorage = OAuth2TokenStorage.shared
     private let profileService = ProfileService.shared
     private let profileImageService = ProfileImageService.shared
     private var profileImageServiceObserver: NSObjectProtocol?
-    private let avatarImageView: UIImageView = {
+    private lazy var avatarImageView: UIImageView = {
         var image = UIImageView()
-//        image.image = UIImage(named: "avatar")
+        image.image = UIImage(named: "avatar")
         image.layer.cornerRadius = 35
         image.contentMode = .scaleToFill
         image.clipsToBounds = true
         return image
     }()
-
-    private let nameLabel: UILabel = {
+    
+    private lazy var nameLabel: UILabel = {
         var label = UILabel()
         label.text = "Migel Ohara"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         return label
     }()
-    private let loginNameLabel: UILabel = {
+    private lazy var loginNameLabel: UILabel = {
         var label = UILabel()
         label.text = "SpiderMan_2099"
         label.textColor = UIColor(red: 174/255, green: 175/255, blue: 180/255, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
         return label
     }()
-    private let descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         var label = UILabel()
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
@@ -45,7 +45,7 @@ final class ProfileViewController: UIViewController {
         return label
     }()
     
-    private var logoutButton: UIButton = {
+    private lazy var logoutButton: UIButton = {
         var button = UIButton()
         button.setImage(UIImage(named: "logout_button"), for: .normal)
         button.addTarget(self, action: #selector(showLogoutAlert), for: .touchUpInside)

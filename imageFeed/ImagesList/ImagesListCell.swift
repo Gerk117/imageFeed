@@ -13,7 +13,8 @@ final class ImagesListCell : UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var dateOfImageLabel: UILabel!
     @IBOutlet weak var imageViewCell: UIImageView!
-    weak var delegate: ImagesListCellDelegate? 
+    weak var delegate: ImagesListCellDelegate?
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         imageViewCell.kf.cancelDownloadTask()
@@ -34,6 +35,4 @@ final class ImagesListCell : UITableViewCell {
     @IBAction private func likeButtonClicked() {
         delegate?.imageListCellDidTapLike(self)
     }
-    
-    
 }

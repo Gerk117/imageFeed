@@ -18,7 +18,7 @@ final class ProfileImageService {
         assert(Thread.isMainThread)
         guard self.task == nil else {return}
         var request = URLRequest(url: URL(string:"https://api.unsplash.com/users/\(username)")!)
-        request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage().token!)"]
+        request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage.shared.token!)"]
         let session = urlSession
         let task = session.objectTask(for: request) {[weak self] (result:Result<UserResult,Error>) in
             guard let self else {return}

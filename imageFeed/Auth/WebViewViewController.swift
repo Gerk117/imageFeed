@@ -51,7 +51,7 @@ class WebViewViewController : UIViewController {
     }
 
     private func loadWeb(){
-        var urlComponents = URLComponents(string:  "https://unsplash.com/oauth/authorize")!
+        guard var urlComponents = URLComponents(string:  "https://unsplash.com/oauth/authorize") else { return }
         urlComponents.queryItems = [
             URLQueryItem(name: "client_id", value: AuthorisationConsts.accessKey),
             URLQueryItem(name: "redirect_uri", value: AuthorisationConsts.redirectURI),

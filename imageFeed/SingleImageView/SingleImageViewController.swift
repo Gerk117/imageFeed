@@ -9,13 +9,6 @@ import UIKit
 import Kingfisher
 final class SingleImageViewController : UIViewController {
     
-//    var image: UIImage! {
-//        didSet {
-//            guard isViewLoaded else { return }
-//            imageView.image = image
-//            rescaleAndCenterImageInScrollView(image: image)
-//        }
-//    }
     var imageUrl : String = ""
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private weak var scrollView: UIScrollView!
