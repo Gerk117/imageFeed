@@ -12,6 +12,7 @@ final class ProfileService {
     private let urlSession = URLSession.shared
     private var task: URLSessionTask?
     private(set) var profile: Profile?
+    private init(){}
     
     func fetchProfile(_ token: String, completion: @escaping (Result<Profile?, Error>) -> Void) {
         assert(Thread.isMainThread)
@@ -37,6 +38,7 @@ final class ProfileService {
                     completion(.failure(error))
                 }
             }
+            self.task = nil
         }
         self.task = task
         task.resume()

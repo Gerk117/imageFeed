@@ -15,9 +15,7 @@ class ImagesListService {
     private let dateForm = ISO8601DateFormatter()
     private (set) var photos: [Photo] = []
     private var nextPage = 0
-    private init(){
-        
-    }
+    private init(){}
     
     func fetchPhotosNextPage(comp : @escaping (Result<[Photo],Error>)->()) {
         assert(Thread.isMainThread)
@@ -32,11 +30,9 @@ class ImagesListService {
             case .success(let result):
                 var photos = [Photo]()
                 result.forEach { result in
-                    let dateForm = DateFormatter()
-                    dateForm.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     let photo = Photo(id: result.id,
                                       size: CGSize(width: result.width, height: result.height),
-                                      createdAt:dateForm.date(from: result.createdAt ?? ""),
+                                      createdAt:self.dateForm.date(from: result.createdAt ?? ""),
                                       welcomeDescription: result.description,
                                       thumbImageURL: result.urls.thumb,
                                       largeImageURL: result.urls.full,
@@ -79,11 +75,7 @@ class ImagesListService {
         self.photos[index] = newPhoto
         var request = URLRequest(url: URL(string: "https://api.unsplash.com/photos/\(photoId)/like")!)
         request.allHTTPHeaderFields = ["Authorization":"Bearer \(OAuth2TokenStorage.shared.token!)"]
-        if isLike {
-            request.httpMethod = "DELETE"
-        } else {
-            request.httpMethod = "POST"
-        }
+        request.httpMethod = isLike ? "DELETE" : "POST"
         let task = urlSession.objectTask(for: request) { [weak self] (result:Result<PhotoResult,Error>) in
             guard let self else {return}
             switch result {

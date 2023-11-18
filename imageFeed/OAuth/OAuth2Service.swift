@@ -18,38 +18,39 @@ class OAuth2Service {
         if lastCode == code { return }
         task?.cancel()
         lastCode = code
-        let request = makeRequest(code: code)
+        guard var request = makeRequest(code: code) else {return}
         let task = urlSession.objectTask(for: request) {[weak self] (result:Result<OAuthTokenResponseBody,Error>) in
             guard let self else {return}
             switch result {
             case .success(let body):
                 DispatchQueue.main.async{
-                completion(.success(body.accessToken))
-            }
+                    completion(.success(body.accessToken))
+                }
             case .failure(let error):
                 DispatchQueue.main.async {
                     completion(.failure(error))
                 }
             }
+            self.task = nil
         }
         self.task = task
         task.resume()
     }
-        private func makeRequest(code: String) -> URLRequest {
-            var urlComponents = URLComponents(string:  "https://unsplash.com/oauth/token")!
-            urlComponents.queryItems = [
-                URLQueryItem(name: "client_id", value: AuthorisationConsts.accessKey),
-                URLQueryItem(name: "client_secret", value: AuthorisationConsts.secretKey),
-                URLQueryItem(name: "redirect_uri", value: AuthorisationConsts.redirectURI),
-                URLQueryItem(name: "code", value: code),
-                URLQueryItem(name: "grant_type", value: "authorization_code")
-            ]
-            let url : URL! = urlComponents.url
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            return request
-        }
+    private func makeRequest(code: String) -> URLRequest? {
+        guard var urlComponents = URLComponents(string:  "https://unsplash.com/oauth/token") else {return nil}
+        urlComponents.queryItems = [
+            URLQueryItem(name: "client_id", value: AuthorisationConsts.accessKey),
+            URLQueryItem(name: "client_secret", value: AuthorisationConsts.secretKey),
+            URLQueryItem(name: "redirect_uri", value: AuthorisationConsts.redirectURI),
+            URLQueryItem(name: "code", value: code),
+            URLQueryItem(name: "grant_type", value: "authorization_code")
+        ]
+        let url : URL! = urlComponents.url
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        return request
     }
+}
 
 
 extension URLSession {
