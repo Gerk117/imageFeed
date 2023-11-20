@@ -18,7 +18,7 @@ class OAuth2Service {
         if lastCode == code { return }
         task?.cancel()
         lastCode = code
-        guard var request = makeRequest(code: code) else {return}
+        guard let request = makeRequest(code: code) else {return}
         let task = urlSession.objectTask(for: request) {[weak self] (result:Result<OAuthTokenResponseBody,Error>) in
             guard let self else {return}
             switch result {
@@ -39,9 +39,9 @@ class OAuth2Service {
     private func makeRequest(code: String) -> URLRequest? {
         guard var urlComponents = URLComponents(string:  "https://unsplash.com/oauth/token") else {return nil}
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: AuthorisationConsts.accessKey),
-            URLQueryItem(name: "client_secret", value: AuthorisationConsts.secretKey),
-            URLQueryItem(name: "redirect_uri", value: AuthorisationConsts.redirectURI),
+            URLQueryItem(name: "client_id", value: AuthConfiguration.standard.accessKey),
+            URLQueryItem(name: "client_secret", value: AuthConfiguration.standard.secretKey),
+            URLQueryItem(name: "redirect_uri", value: AuthConfiguration.standard.redirectURI),
             URLQueryItem(name: "code", value: code),
             URLQueryItem(name: "grant_type", value: "authorization_code")
         ]

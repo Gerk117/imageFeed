@@ -9,10 +9,16 @@ import UIKit
 import NotificationCenter
 import Kingfisher
 
-final class ProfileViewController: UIViewController {
-    private var tokenStorage = OAuth2TokenStorage.shared
-    private let profileService = ProfileService.shared
-    private let profileImageService = ProfileImageService.shared
+public protocol ProfileViewControllerProtocol {
+    var presenter : ProfileViewPresenterProtocol? { get set }
+    func didTapLogoutButton()
+}
+
+final class ProfileViewController: UIViewController,ProfileViewControllerProtocol {
+    var tokenStorage: OAuth2TokenStorage = OAuth2TokenStorage.shared
+    var profileService: ProfileService = ProfileService.shared
+    var profileImageService: ProfileImageService = ProfileImageService.shared
+    var presenter: ProfileViewPresenterProtocol?
     private var profileImageServiceObserver: NSObjectProtocol?
     private lazy var avatarImageView: UIImageView = {
         var image = UIImageView()
@@ -47,6 +53,7 @@ final class ProfileViewController: UIViewController {
     
     private lazy var logoutButton: UIButton = {
         var button = UIButton()
+        button.accessibilityIdentifier = "logout button"
         button.setImage(UIImage(named: "logout_button"), for: .normal)
         button.addTarget(self, action: #selector(showLogoutAlert), for: .touchUpInside)
         return button
@@ -55,6 +62,7 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = ProfileViewPresenter(view: self)
         setupScreen()
         updateProfileDetails(profile: profileService.profile)
         profileImageServiceObserver = NotificationCenter.default
@@ -64,9 +72,9 @@ final class ProfileViewController: UIViewController {
                 queue: .main
             ) { [weak self] _ in
                 guard let self = self else { return }
-                self.updateAvatar()
+                self.updateAvatar(avatarUrl:profileImageService.avatarURL)
             }
-        updateAvatar()
+        self.updateAvatar(avatarUrl: profileImageService.avatarURL)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -82,28 +90,23 @@ final class ProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Нет", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
-    private func updateAvatar() {
-        guard
-            let profileImageURL = profileImageService.avatarURL,
-            let url = URL(string: profileImageURL)
+    func updateAvatar(avatarUrl: String?) {
+        guard let profileImageURL = avatarUrl,
+         let url = URL(string: profileImageURL)
         else { return }
         avatarImageView.kf.setImage(with: url)
     }
     
-    private func updateProfileDetails(profile: Profile?) {
+    
+    func updateProfileDetails(profile: Profile?) {
         self.nameLabel.text = profile?.name
         self.loginNameLabel.text = profile?.loginName
         self.descriptionLabel.text = profile?.bio
     }
     
     
-    private func didTapLogoutButton() {
-        WebViewViewController.clean()
-        tokenStorage.token = nil
-        guard let window = UIApplication.shared.windows.first else { fatalError("Invalid Configuration") }
-        let splashView = UIStoryboard(name: "Main", bundle: .main)
-            .instantiateViewController(withIdentifier: "SplashViewController")
-        window.rootViewController = splashView
+    func didTapLogoutButton() {
+        presenter?.exit()
     }
     
     

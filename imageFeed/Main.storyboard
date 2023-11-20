@@ -35,6 +35,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEM-Nc-CuV">
                                 <rect key="frame" x="16" y="724" width="382" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Authenticate"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="jEj-mx-yBi"/>
                                 </constraints>
@@ -79,7 +80,7 @@
         <!--Web View View Controller-->
         <scene sceneID="6eY-p0-n4d">
             <objects>
-                <viewController id="Ppa-Xm-mgI" customClass="WebViewViewController" customModule="imageFeed" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UnsplashWebView" interactionActivityTrackingBaseName="UnsplashWebView" id="Ppa-Xm-mgI" customClass="WebViewViewController" customModule="imageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTA-Hg-V9w">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -111,6 +112,9 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4fZ-xz-bfw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="4fZ-xz-bfw" firstAttribute="bottom" secondItem="IXe-Ju-eGa" secondAttribute="bottom" id="IZd-5H-LhY"/>
                             <constraint firstItem="IXe-Ju-eGa" firstAttribute="top" secondItem="4fZ-xz-bfw" secondAttribute="top" id="RSs-lo-bQO"/>

@@ -10,14 +10,22 @@ import Kingfisher
 protocol ImagesListCellDelegate: AnyObject {
     func imageListCellDidTapLike(_ cell: ImagesListCell)
 }
+public protocol ImageListViewControllerProtocol {
+    var presenter : ImagesListViewPresenterProtocol? {get set}
+    func showSelectedImage(at: IndexPath)
+    
+}
 
-final class ImagesListViewController: UIViewController {
+final class ImagesListViewController: UIViewController, ImageListViewControllerProtocol{
+   
+    
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private var observer : NSObjectProtocol?
     private var imagesListService = ImagesListService.shared
     @IBOutlet private var tableView: UITableView!
     private var photos = [Photo]()
     weak var delegate: ImagesListCellDelegate?
+    var presenter: ImagesListViewPresenterProtocol?
     
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -28,6 +36,7 @@ final class ImagesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = ImagesListPresenter(viewController: self)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
@@ -47,6 +56,7 @@ final class ImagesListViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showSingleImageSegueIdentifier {
             let viewController = segue.destination as? SingleImageViewController
@@ -58,6 +68,7 @@ final class ImagesListViewController: UIViewController {
             super.prepare(for: segue, sender: sender)
         }
     }
+    
     
     func configCell(for cell: ImagesListCell?, with indexPath: IndexPath) {
         let model = photos[indexPath.row]
@@ -89,6 +100,9 @@ final class ImagesListViewController: UIViewController {
             }
         }
     }
+    func showSelectedImage(at: IndexPath) {
+        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: at)
+    }
     
 }
 
@@ -115,9 +129,8 @@ extension ImagesListViewController: UITableViewDataSource {
 
 extension ImagesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
+        presenter?.didSelectImage(at: indexPath)
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let photo = photos[indexPath.row]
         let size = photo.size
